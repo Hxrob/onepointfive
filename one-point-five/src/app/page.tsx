@@ -9,6 +9,13 @@ const carouselItems = [
   { href: '/rooms/204', src: '/images/204.png', alt: 'Room 204', label: 'Room 204' },
 ];
 
+const services = [
+  { src: '/images/bikerental.png', alt: 'Bike Rental', title: 'Bike Rental', description: 'Details here' },
+  { src: '/images/matcha.png', alt: 'Matcha and Tea Set', title: 'Matcha and Tea Set', description: 'Details here' },
+  { src: '/images/manga.png', alt: 'Manga', title: 'Manga', description: 'Details here' },
+  { src: '/images/photos.png', alt: 'Photo Tour', title: 'Photography Tours', description: 'Details here' }
+];
+
 export default function HomePage() {
   return (
     <>
@@ -154,7 +161,6 @@ export default function HomePage() {
       </div>
 
       {/* Placeholder for Map */}
-      <Image src="/images/204.png" fill className="w-[756.03px] h-[505px]" alt=""/>
     </section>
 
     
@@ -210,6 +216,38 @@ export default function HomePage() {
         </div>
       </div>
     </section>
+
+    {/* Services Section */}
+    <section className="w-full h-[733px] bg-stone-50">
+      <h2 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
+        Services
+      </h2>
+
+      
+        
+      <div className="container mx-auto mt-36">
+        <div className="flex justify-center gap-8">
+          {services.map((service, index) => (
+            <div key={index} className="relative w-[279.93px] h-[305.38px] bg-slate-800 rounded-[10px]">
+              <div className="absolute -top-[57.12px] left-[29.46px] w-[265.04px] h-[207.22px] z-10">
+                <Image className="w-full h-full rounded-[10px] object-cover" src={service.src} fill alt={service.alt} />
+              </div>
+              <div className="absolute left-[19.28px] top-[162.62px] text-stone-50 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">{service.title}</div>
+              <div className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP']">{service.description}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-16">
+        <button className=" w-64 h-14 bg-orange-50 rounded-[10px] border-[3px] border-gray-600">
+          <span className=" w-28 h-7 text-center justify-center text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">RESERVE</span>
+        </button>
+      </div>
+    </section>
+    
+    
+
     </>
   );
 }
