@@ -1,22 +1,32 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
+import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 
-
-const carouselItems = [
-  { href: '/rooms/201', src: '/images/201.png', alt: 'Room 201', label: 'Room 201' },
-  { href: '/rooms/202', src: '/images/202.png', alt: 'Room 202', label: 'Room 202' },
-  { href: '/rooms/203', src: '/images/203.png', alt: 'Room 203', label: 'Room 203' },
-  { href: '/rooms/204', src: '/images/204.png', alt: 'Room 204', label: 'Room 204' },
-];
-
-const services = [
-  { src: '/images/bikerental.png', alt: 'Bike Rental', title: 'Bike Rental', description: 'Details here' },
-  { src: '/images/matcha.png', alt: 'Matcha and Tea Set', title: 'Matcha and Tea Set', description: 'Details here' },
-  { src: '/images/manga.png', alt: 'Manga', title: 'Manga', description: 'Details here' },
-  { src: '/images/photos.png', alt: 'Photo Tour', title: 'Photography Tours', description: 'Details here' }
-];
 
 export default function HomePage() {
+  const services = [
+    { src: '/images/bikerental.png', alt: 'Bike Rental', title: 'Bike Rental', description: 'Details here' },
+    { src: '/images/matcha.png', alt: 'Matcha and Tea Set', title: 'Matcha and Tea Set', description: 'Details here' },
+    { src: '/images/manga.png', alt: 'Manga', title: 'Manga', description: 'Details here' },
+    { src: '/images/photos.png', alt: 'Photo Tour', title: 'Photography Tours', description: 'Details here' }
+  ];
+
+    const amenities = [
+      { icon: '/images/wifi.svg', name: 'Free Wi-Fi' },
+      { icon: '/images/kitchen.svg', name: 'Kitchen Space' },
+      { icon: '/images/bathtub.svg', name: 'Shower and Bath' },
+      { icon: '/images/laundry.svg', name: 'Washing Machine' }
+    ];
+
+    const rooms = [
+        {number: 201, description: "Double Bed Room", details: "Details here"},
+        {number: 202, description: "Single Bed Room with Working Desk", details: "Details here"},
+        {number: 203, description: "Single Bed Room with Tatami", details: "Details here"},
+        {number: 204, description: "Twin Bed Room", details: "Details here"},
+    ]
+
   return (
     <>
       <div className="relative w-full h-screen">
@@ -36,45 +46,16 @@ export default function HomePage() {
 
           <div className="flex justify-center items-start space-x-16">
 
-            {/* Wifi */}
-            <div className="flex flex-col items-center text-center w-32">
-              <div className="relative w-24 h-24 mb-4">
-                <Image src="/images/wifi.svg" alt="Wifi" fill className="object-contain"/>
+            {amenities.map((amenity, index) => (
+              <div key={index} className="flex flex-col items-center text-center w-32">
+                <div className="relative w-24 h-24 mb-4">
+                  <Image src={amenity.icon} alt={amenity.name} fill className="object-contain"/>
+                </div>
+                <div className="w-36 text-center justify-center text-slate-800 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">
+                  {amenity.name}
+                </div>
               </div>
-              <div className="w-36 text-center justify-center text-slate-800 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">
-                Free Wi-Fi
-              </div>
-            </div>
-
-            {/* Kitchen */}
-            <div className="flex flex-col items-center text-center w-32">
-              <div className="relative w-24 h-24 mb-4">
-                <Image src="/images/kitchen.svg" alt="Kitchen" fill className="object-contain"/>
-              </div>
-              <div className="w-36 text-center justify-center text-slate-800 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">
-                 Kitchen Space
-              </div>
-            </div>
-
-            {/* Laundry */}
-            <div className="flex flex-col items-center text-center w-32">
-              <div className="relative w-24 h-24 mb-4">
-                <Image src="/images/laundry.svg" alt="Laundry" fill className="object-contain"/>
-              </div>
-              <div className="w-36 text-center justify-center text-slate-800 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">
-                Washing Machine
-              </div>
-            </div>
-
-            {/* Shower & Bathtub */}
-            <div className="flex flex-col items-center text-center w-32">
-              <div className="relative w-24 h-24 mb-4">
-                <Image src="/images/bathtub.svg" alt="Bathtub" fill className="object-contain"/>
-              </div>
-              <div className="w-36 text-center justify-center text-slate-800 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">
-                Shower & Bathtub
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -87,80 +68,51 @@ export default function HomePage() {
             Rooms
           </div>
 
-          {/* Room 201 */}
-          <div className="relative w-full max-w-[1240px] h-[726.54px] aspect-[1240/726.54] mt-10">
-            <Image src="/images/201.png" fill className="object-contain" alt="Room 201"/>
-            <div className="absolute w-64 h-44 mt-[32.55px] ml-[34.03px] justify-center text-slate-800 text-8xl font-black font-['Noto_Sans_JP'] [text-shadow:_2px_2px_4px_rgb(252_249_249_/_1.00)] z-10">
-              201
-            </div>
+          {rooms.map((room, index) => (
+            <div key={index} className="relative w-full max-w-[1240px] h-[726.54px] aspect-[1240/726.54] mt-10">
+              <Image src={`/images/${room.number}.png`} fill className="object-contain" alt={`Room ${room.number}`}/>
+              <div className="absolute w-64 h-44 mt-[32.55px] ml-[34.03px] justify-center text-slate-800 text-8xl font-black font-['Noto_Sans_JP'] [text-shadow:_2px_2px_4px_rgb(252_249_249_/_1.00)] z-10">
+                {room.number}
+              </div>
 
             <div className="absolute w-[726.54px] h-24 mt-[152.72px] ml-[34.03px] justify-center text-orange-50 text-5xl font-normal font-['Kaisei_Tokumin'] z-10">
-              Double Bed Room
+              {room.description}
             </div>
           
             <div className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
-              View Details
+              {room.details}
             </div>
           </div>
-
-          {/* Room 202 */}
-          <div className="relative w-full max-w-[1240px] h-[726.54px] aspect-[1240/726.54] mt-10">
-            <Image src="/images/202.png" fill className="object-contain" alt="Room 202"/>
-            <div className="absolute w-64 h-44 mt-[32.55px] ml-[34.03px] justify-center text-slate-800 text-8xl font-black font-['Noto_Sans_JP'] [text-shadow:_2px_2px_4px_rgb(252_249_249_/_1.00)] z-10">
-              202
-            </div>
-
-            <div className="absolute w-[726.54px] h-24 mt-[152.72px] ml-[34.03px] justify-center text-orange-50 text-5xl font-normal font-['Kaisei_Tokumin'] z-10">
-              Single Bed Room With Desk
-            </div>
-          
-            <div className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
-              View Details
-            </div>
-          </div>
-
-          {/* Room 203 */}
-          <div className="relative w-full max-w-[1240px] h-[726.54px] aspect-[1240/726.54] mt-10">
-            <Image src="/images/203.png" fill className="object-contain" alt="Room 203"/>
-            <div className="absolute w-64 h-44 mt-[32.55px] ml-[34.03px] justify-center text-slate-800 text-8xl font-black font-['Noto_Sans_JP'] [text-shadow:_2px_2px_4px_rgb(252_249_249_/_1.00)] z-10">
-              203
-            </div>
-
-            <div className="absolute w-[726.54px] h-24 mt-[152.72px] ml-[34.03px] justify-center text-orange-50 text-5xl font-normal font-['Kaisei_Tokumin'] z-10">
-              Single Bed Room With Tatami
-            </div>
-          
-            <div className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
-              View Details
-            </div>
-          </div>
-
-          {/* Room 204 */}
-          <div className="relative w-full max-w-[1240px] h-[726.54px] aspect-[1240/726.54] mt-10">
-            <Image src="/images/204.png" fill className="object-contain" alt="Room 204"/>
-            <div className="absolute w-64 h-44 mt-[32.55px] ml-[34.03px] justify-center text-slate-800 text-8xl font-black font-['Noto_Sans_JP'] [text-shadow:_2px_2px_4px_rgb(252_249_249_/_1.00)] z-10">
-              204
-            </div>
-
-            <div className="absolute w-[726.54px] h-24 mt-[152.72px] ml-[34.03px] justify-center text-orange-50 text-5xl font-normal font-['Kaisei_Tokumin'] z-10">
-              Twin Bed Room
-            </div>
-          
-            <div className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
-              View Details
-            </div>
-          </div>
+          ))}
       </div>
     </section>
 
 
     {/* Map Section */}
     <section className="w-full h-[775px] bg-stone-50">
-      <div className="justify-start text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
+      <div className="pt-8 text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
         Map
       </div>
 
       {/* Placeholder for Map */}
+      <div className="flex flex-row justify-center items-start mt-10 px-4">
+        <div className="flex flex-row gap-8">
+          <APIProvider apiKey={process.env.GOOGLE_MAPS_API_KEY!}>
+            <div className="w-[756px] h-[505px]">
+              <Map
+                defaultCenter={{ lat: 35.79638550079517, lng: 139.7871127100252 }}
+                defaultZoom={18}
+                style={{ height: '100%', width: '100%' }}
+              >
+                <Marker position={{ lat: 35.79638550079517, lng: 139.7871127100252 }} />
+              </Map>
+            </div>
+          </APIProvider>
+
+          <div className="w-[466px] text-slate-800 text-base font-normal font-['Noto_Sans_JP'] self-start" 
+               dangerouslySetInnerHTML={{ __html: `〒1210823 東京都足立区伊興4丁目2-27<br/>東武スカイツリー線 竹の塚駅 徒歩7分<br/>コンビニ徒歩2分<br/>スーパー徒歩7分<br/>商業ストリート徒歩10分<br/><br/>お問合せ先電話番号: 080-6661-9441(日本語JJapanese)<br/>お問合せ先電話番号: 090-6856-0433(英語English)<br/>お問合せ先メールアドレス: opf@s-kenchiku.jp` }} />
+        </div>
+      </div>
     </section>
 
     
@@ -232,8 +184,8 @@ export default function HomePage() {
               <div className="absolute -top-[57.12px] left-[29.46px] w-[265.04px] h-[207.22px] z-10">
                 <Image className="w-full h-full rounded-[10px] object-cover" src={service.src} fill alt={service.alt} />
               </div>
-              <div className="absolute left-[19.28px] top-[162.62px] text-stone-50 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">{service.title}</div>
-              <div className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP']">{service.description}</div>
+              <span className="absolute left-[19.28px] top-[162.62px] text-stone-50 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">{service.title}</span>
+              <span className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP']">{service.description}</span>
             </div>
           ))}
         </div>
@@ -241,13 +193,38 @@ export default function HomePage() {
 
       <div className="flex justify-center mt-16">
         <button className=" w-64 h-14 bg-orange-50 rounded-[10px] border-[3px] border-gray-600">
-          <span className=" w-28 h-7 text-center justify-center text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">RESERVE</span>
+          <span className=" w-28 h-7 text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">RESERVE</span>
         </button>
       </div>
     </section>
-    
-    
 
+
+    {/* Socials Section */}
+    <section className="w-full h-[1275px] bg-stone-50">
+      <div className="flex flex-col items-center h-full">
+        <h2 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
+          Socials
+        </h2>
+        
+        <div className="flex flex-row space-x-6">
+          <Link href="https://www.instagram.com/onepointfivehotel/" target="_blank" className="flex items-center space-x-4">
+            <Image src="/images/icons/instagram.svg" alt="Instagram" width={30} height={30} />
+            <span className="text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">ONEPOINTFIVEHOTEL</span>
+          </Link>
+
+          <Link href="https://www.facebook.com/onepointfive/" target="_blank" className="flex items-center space-x-4">
+            <Image src="/images/icons/line.svg" alt="Facebook" width={30} height={30} />
+            <span className="text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">ONEPOINTFIVEHOTEL</span>
+          </Link>
+
+          {/* Add Instagram photos */}
+
+        </div>
+      </div>
+    </section>
     </>
   );
 }
+
+
+
