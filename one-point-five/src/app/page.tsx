@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import InstagramEmbed from '@/components/InstagramEmbed';
+import InquiryForm from '@/components/InquiryForm';
 
 
 export default function HomePage() {
@@ -200,8 +202,8 @@ export default function HomePage() {
 
 
     {/* Socials Section */}
-    <section className="w-full h-[1275px] bg-stone-50">
-      <div className="flex flex-col items-center h-full">
+    <section className="w-full h-[925px] bg-stone-50">
+      <div className="flex flex-col items-center">
         <h2 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
           Socials
         </h2>
@@ -216,12 +218,17 @@ export default function HomePage() {
             <Image src="/images/icons/line.svg" alt="Facebook" width={30} height={30} />
             <span className="text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">ONEPOINTFIVEHOTEL</span>
           </Link>
+        </div>
 
-          {/* Add Instagram photos */}
-
+        <div className="mt-12 gap-4 flex flex-row items-center justify-center">
+          <InstagramEmbed url="https://www.instagram.com/p/DMerKPkz5_h/" />
+          <InstagramEmbed url="https://www.instagram.com/p/DL9N7LgTSDV/" />
+          <InstagramEmbed url="https://www.instagram.com/p/DLY-AOATUP6/?img_index=3" />
         </div>
       </div>
     </section>
+
+    <InquiryForm />
     </>
   );
 }

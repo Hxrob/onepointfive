@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import BookingForm from '@/components/BookingForm';
 
 
 export default function RoomsPage() {
@@ -22,7 +23,7 @@ export default function RoomsPage() {
     const rooms = [
         {number: 201, description: "Double Bed Room", text: "ダブルベッド<br/>ゆったり寝たい方や<br/>お子様との添い寝におおすすめ<br/><br/>基本料金&nbsp;&nbsp;&nbsp;&nbsp;1泊16,500円<br/>定員&nbsp;&nbsp;&nbsp;1名(最大3名)", images: ['/images/rooms/201-1.jpg', '/images/rooms/201-2.jpg', '/images/rooms/201-3.jpg', '/images/rooms/201-4.jpg', '/images/rooms/201-5.jpg']},
         {number: 202, description: "Single Bed Room with Working Desk", text: "デスクあり<br/>ビジネスマンや学生におすすめ<br/><br/>基本料金&nbsp;&nbsp;&nbsp;&nbsp;1泊14,700円<br/>定員&nbsp;&nbsp;&nbsp;1名(最大2名)", images: ['/images/rooms/202-1.jpg', '/images/rooms/202-2.jpg', '/images/rooms/202-3.jpg', '/images/rooms/202-4.jpg', '/images/rooms/202-5.jpg']},
-        {number: 203, description: "Single Bed Room with Tatami", text: "畳と折り畳みテーブル付き<br/><br/>畳で寝転ぶこともできて和風な部屋です。<br/><br/>基本料金&nbsp;&nbsp;&nbsp;&nbsp;1泊14,700円<br/>定員 &nbsp;&nbsp;&nbsp;1名(最大2名)", images: ['/images/rooms/203-1.jpg', '/images/rooms/203-2.jpg', '/images/rooms/203-3.jpg', '/images/rooms/203-4.jpg']},
+        {number: 203, description: "Single Bed Room with Tatami", text: "畳と折り畳みテーブル付き<br/><br/>畳で寝転ぶこともできて和風な部屋です。<br/><br/>基本料金&nbsp;&nbsp;&nbsp;&nbsp;1泊14,700円<br/>定員 &nbsp;&nbsp;&nbsp;1名(最大2名)", images: ['/images/rooms/203-1.jpg', '/images/rooms/203-2.jpg', '/images/rooms/203-3.jpg', '/images/rooms/203-4.jpg', '/images/rooms/203-5.jpg']},
         {number: 204, description: "Twin Bed Room", text: "ツインベッド<br/>2名まで同額料金なので、2名ですとお得です。<br/><br/>基本料金&nbsp;&nbsp;&nbsp;&nbsp;1泊21,000円<br/>定員&nbsp;&nbsp;&nbsp;&nbsp;2名(最大3名)", images: ['/images/rooms/204-1.jpg', '/images/rooms/204-2.jpg', '/images/rooms/204-3.jpg', '/images/rooms/204-4.jpg', '/images/rooms/204-5.jpg']},
     ]
 
@@ -44,7 +45,7 @@ export default function RoomsPage() {
 
 
         {rooms.map((room, roomIndex) => (
-            <section key={room.number} className="w-full h-[900px] bg-stone-50 flex items-center justify-center">
+            <section key={room.number} className="w-full h-[1000px] bg-stone-50 flex items-center justify-center">
                 <div className="container mx-auto px-4 flex flex-col w-[989px] h-[710px]">
                     <span className="text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">Room {room.number}</span>
                     <span className="justify-start text-stone-700 text-3xl font-normal font-['Noto_Sans_JP'] leading-[60px] mb-4 whitespace-pre">{room.description}</span>
@@ -98,6 +99,7 @@ export default function RoomsPage() {
                 </div>
             </section>
         ))}
+        <BookingForm />
         </>
     );
 }
