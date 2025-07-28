@@ -45,7 +45,7 @@ export default function RoomsPage() {
 
 
         {rooms.map((room, roomIndex) => (
-            <section key={room.number} className="w-full h-[1000px] bg-stone-50 flex items-center justify-center">
+            <section id={`room-${room.number}`} key={room.number} className="w-full h-[1000px] bg-stone-50 flex items-center justify-center">
                 <div className="container mx-auto px-4 flex flex-col w-[989px] h-[710px]">
                     <span className="text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">Room {room.number}</span>
                     <span className="justify-start text-stone-700 text-3xl font-normal font-['Noto_Sans_JP'] leading-[60px] mb-4 whitespace-pre">{room.description}</span>
@@ -99,7 +99,9 @@ export default function RoomsPage() {
                 </div>
             </section>
         ))}
-        <BookingForm />
+        <section id="booking">
+            <BookingForm />
+        </section>
         </>
     );
 }

@@ -9,10 +9,10 @@ import InquiryForm from '@/components/InquiryForm';
 
 export default function HomePage() {
   const services = [
-    { src: '/images/bikerental.png', alt: 'Bike Rental', title: 'Bike Rental', description: 'Details here' },
-    { src: '/images/matcha.png', alt: 'Matcha and Tea Set', title: 'Matcha and Tea Set', description: 'Details here' },
-    { src: '/images/manga.png', alt: 'Manga', title: 'Manga', description: 'Details here' },
-    { src: '/images/photos.png', alt: 'Photo Tour', title: 'Photography Tours', description: 'Details here' }
+    { src: '/images/bikerental.png', alt: 'Bike Rental', title: 'Bike Rental', link: 'https://www.instagram.com/p/DMerKPkz5_h/'},
+    { src: '/images/matcha.png', alt: 'Matcha and Tea Set', title: 'Matcha and Tea Set', link: 'https://www.instagram.com/p/C8ylE_ty4XY/?img_index=1'},
+    { src: '/images/manga.png', alt: 'Manga', title: 'Manga', link: 'https://www.instagram.com/p/DGekQDCSRo6/'},
+    { src: '/images/photos.png', alt: 'Photo Tour', title: 'Photography Tours', link: 'https://www.instagram.com/p/C88vgbySOW2/'}
   ];
 
     const amenities = [
@@ -40,7 +40,7 @@ export default function HomePage() {
 
 
       {/* Amenities Section */}
-      <section className="py-24 mt-16">
+      <section id="amenities" className="py-24 mt-16">
         <div className="container mx-auto px-4 flex flex-col w-full h-[429px]">
           <div className="text-center justify-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-30">
             Amenities
@@ -64,7 +64,7 @@ export default function HomePage() {
 
 
       {/* Rooms Section */}
-      <section>
+      <section id="rooms">
         <div className="container mx-auto px-4 flex flex-col items-center h-[3326px]">
           <div className="justify-center text-slate-800 text-5xl text-center font-normal font-['Kaisei_Tokumin']">
             Rooms
@@ -80,10 +80,10 @@ export default function HomePage() {
             <div className="absolute w-[726.54px] h-24 mt-[152.72px] ml-[34.03px] justify-center text-orange-50 text-5xl font-normal font-['Kaisei_Tokumin'] z-10">
               {room.description}
             </div>
-          
-            <div className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
+
+            <Link href={`/rooms#room-${room.number}`} className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
               {room.details}
-            </div>
+            </Link>
           </div>
           ))}
       </div>
@@ -91,7 +91,7 @@ export default function HomePage() {
 
 
     {/* Map Section */}
-    <section className="w-full h-[775px] bg-stone-50">
+    <section id="map" className="w-full h-[775px] bg-stone-50">
       <div className="pt-8 text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
         Map
       </div>
@@ -120,7 +120,7 @@ export default function HomePage() {
     
 
     {/* Explore Nearby Section */}
-    <section className="bg-stone-50 py-16">
+    <section id="explore-nearby" className="bg-stone-50 py-16">
       <div className="container w-fill h-[850px] mx-auto px-4">
         <h2 className="text-5xl font-normal font-['Kaisei_Tokumin'] text-center text-slate-800 mb-12">
           Explore Nearby
@@ -172,7 +172,7 @@ export default function HomePage() {
     </section>
 
     {/* Services Section */}
-    <section className="w-full h-[733px] bg-stone-50">
+    <section id="services" className="w-full h-[733px] bg-stone-50">
       <h2 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
         Services
       </h2>
@@ -187,14 +187,14 @@ export default function HomePage() {
                 <Image className="w-full h-full rounded-[10px] object-cover" src={service.src} fill alt={service.alt} />
               </div>
               <span className="absolute left-[19.28px] top-[162.62px] text-stone-50 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">{service.title}</span>
-              <span className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP']">{service.description}</span>
+              <Link href={service.link} className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP']">Details Here</Link>
             </div>
           ))}
         </div>
       </div>
 
       <div className="flex justify-center mt-16">
-        <button className=" w-64 h-14 bg-orange-50 rounded-[10px] border-[3px] border-gray-600">
+        <button className=" w-64 h-14 bg-orange-50 rounded-[10px] border-[3px] border-gray-600 cursor-pointer" onClick={() => window.location.href = '#inquiry'}>
           <span className=" w-28 h-7 text-slate-800 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">RESERVE</span>
         </button>
       </div>
@@ -202,7 +202,7 @@ export default function HomePage() {
 
 
     {/* Socials Section */}
-    <section className="w-full h-[925px] bg-stone-50">
+    <section id="socials" className="w-full h-[925px] bg-stone-50">
       <div className="flex flex-col items-center">
         <h2 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
           Socials
@@ -228,7 +228,9 @@ export default function HomePage() {
       </div>
     </section>
 
-    <InquiryForm />
+    <div id="inquiry">
+      <InquiryForm />
+    </div>
     </>
   );
 }

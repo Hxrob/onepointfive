@@ -50,22 +50,25 @@ export default function Footer() {
                 </h2>
 
                 <nav className="ml-5 space-y-3">
-                  <Link href="/" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                  <Link href="/#amenities" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
                     Amenities
                   </Link>
-                  <Link href="/rooms" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                  <Link href="/#rooms" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
                     Rooms
                   </Link>
-                  <Link href="/" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                  <Link href="/#map" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
                     Map
                   </Link>
-                  <Link href="/gallery" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
-                    Gallery
-                  </Link>
-                  <Link href="/locations" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                  <Link href="/#explore-nearby" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
                     Nearby
                   </Link>
-                  <Link href="/contact" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                  <Link href="/#services" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                    Services
+                  </Link>
+                  <Link href="/#socials" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                    Socials
+                  </Link>
+                  <Link href="/#inquiry" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
                     Contact
                   </Link>
                 </nav>
@@ -79,7 +82,7 @@ export default function Footer() {
                     </Link>
                 </h2>
                 <nav className="ml-5 space-y-3">
-                  <Link href="/contact" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
+                  <Link href="/rooms#booking" className="block text-slate-600 text-lg font-normal font-['Kaisei_Tokumin'] hover:text-slate-800 transition-colors">
                     Book Now
                   </Link>
                 </nav>

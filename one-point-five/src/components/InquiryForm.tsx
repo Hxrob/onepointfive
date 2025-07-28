@@ -8,6 +8,9 @@ export default function InquiryForm() {
     message: '',
     messageType: 'inquiry',
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -17,21 +20,64 @@ export default function InquiryForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Will handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          type: 'inquiry'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+          messageType: 'inquiry',
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending inquiry:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-[] bg-stone-50 px-4 mb-30">
+    <div className="flex flex-col items-center justify-center h-[800px] bg-stone-50 px-4 mb-4">
       <div className="w-full max-w-2xl">
-        <h1 className="justify-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
+        <h1 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
           Inquiry
         </h1>
         
+        {submitStatus === 'success' && (
+          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+            Your inquiry has been sent successfully! We'll get back to you soon.
+          </div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+            Failed to send inquiry. Please try again.
+          </div>
+        )}
+        
         <form onSubmit={handleSubmit} className="space-y-6">
-
           {/* Name */}
           <div className="relative">
             <input
@@ -40,8 +86,9 @@ export default function InquiryForm() {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Name"
-              className="w-96 h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
+              className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -55,6 +102,7 @@ export default function InquiryForm() {
               placeholder="Email"
               className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -67,15 +115,17 @@ export default function InquiryForm() {
               placeholder="Leave a message..."
               rows={6}
               className="w-full px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
+              disabled={isSubmitting}
             />
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-lg font-medium tracking-wider rounded-md transition-colors duration-200"
+            className="w-full py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-lg font-medium tracking-wider rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={isSubmitting}
           >
-            SEND
+            {isSubmitting ? 'SENDING...' : 'SEND'}
           </button>
         </form>
       </div>
