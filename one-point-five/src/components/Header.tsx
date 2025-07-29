@@ -19,6 +19,7 @@ export default function Header() {
   ];
 
   return (
+    // Add drop-shadow to header for depth
     <header className="sticky top-0 bg-[#FDF9EF] w-full h-[75px] z-50">
       <div className="max-w-full mx-auto h-full flex items-center justify-between px-4">
         {/* Logo */}
@@ -30,7 +31,7 @@ export default function Header() {
         
         {/* Navigation */}
         <nav className="flex items-center space-x-20">
-          {/* Home Dropdown */}
+          {/* Home Dropdown, add smooth scrolling */}
           <div 
             className="relative"
             onMouseEnter={() => setIsHomeDropdownOpen(true)}
@@ -69,7 +70,7 @@ export default function Header() {
           <Link href="/locations" className={`text-[#1C2541] text-[20px] ${pathname === '/locations' ? 'font-bold' : 'font-medium'}`}>
             Nearby
           </Link>
-          
+          {/* Move elements further left to match distance with header's left side */}
           <Link href="/rooms#booking" className={`text-[#1C2541] text-[20px] ${pathname == '/rooms#booking' ? 'font-bold' : 'font-medium'}`}>
             Book Now
           </Link>

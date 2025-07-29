@@ -173,6 +173,7 @@ export default function BookingForm() {
                 required
                 disabled={isSubmitting}
               />
+              {/* Set check-in background to  */}
               <label className="absolute -top-2 left-3 bg-stone-50 px-1 text-xs text-slate-500 font-['Kaisei_Tokumin']">
                 Check-In
               </label>
@@ -264,7 +265,7 @@ export default function BookingForm() {
             className="w-full py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-lg font-medium tracking-wider rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'SENDING...' : 'RESERVE'}
+            {isSubmitting ? 'SENDING...' : 'REQUEST BOOKING'}
           </button>
         </form>
       </div>

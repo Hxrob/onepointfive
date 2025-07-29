@@ -1,13 +1,18 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import InstagramEmbed from '@/components/InstagramEmbed';
 import InquiryForm from '@/components/InquiryForm';
 
 
+// Either round all image corners or none
+
 export default function HomePage() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
+
   const services = [
     { src: '/images/bikerental.png', alt: 'Bike Rental', title: 'Bike Rental', link: 'https://www.instagram.com/p/DMerKPkz5_h/'},
     { src: '/images/matcha.png', alt: 'Matcha and Tea Set', title: 'Matcha and Tea Set', link: 'https://www.instagram.com/p/C8ylE_ty4XY/?img_index=1'},
@@ -15,24 +20,51 @@ export default function HomePage() {
     { src: '/images/photos.png', alt: 'Photo Tour', title: 'Photography Tours', link: 'https://www.instagram.com/p/C88vgbySOW2/'}
   ];
 
-    const amenities = [
-      { icon: '/images/wifi.svg', name: 'Free Wi-Fi' },
-      { icon: '/images/kitchen.svg', name: 'Kitchen Space' },
-      { icon: '/images/bathtub.svg', name: 'Shower and Bath' },
-      { icon: '/images/laundry.svg', name: 'Washing Machine' }
-    ];
+  const amenities = [
+    { icon: '/images/wifi.svg', name: 'Free Wi-Fi' },
+    { icon: '/images/kitchen.svg', name: 'Kitchen Space' },
+    { icon: '/images/bathtub.svg', name: 'Shower and Bath' },
+    { icon: '/images/laundry.svg', name: 'Washing Machine' }
+  ];
 
-    const rooms = [
-        {number: 201, description: "Double Bed Room", details: "Details here"},
-        {number: 202, description: "Single Bed Room with Working Desk", details: "Details here"},
-        {number: 203, description: "Single Bed Room with Tatami", details: "Details here"},
-        {number: 204, description: "Twin Bed Room", details: "Details here"},
-    ]
+  const rooms = [
+    {number: 201, description: "Double Bed Room"},
+    {number: 202, description: "Single Bed Room with Working Desk"},
+    {number: 203, description: "Single Bed Room with Tatami"},
+    {number: 204, description: "Twin Bed Room"},
+  ];
+
+  // Nearby locations data matching the /locations page
+  const nearbyLocations = [
+    { name: "Ueno Museum", image: "/images/ueno-museum.png", id: "ueno-museum" },
+    { name: "Toneri Park", image: "/images/toneri-park.png", id: "toneri-park" },
+    { name: "EQUIA", image: "/images/equia.png", id: "equia" },
+    { name: "Seiyu", image: "/images/seiyu.jpg", id: "seiyu" },
+    { name: "Uruma Jima", image: "/images/uruma-jima.jpg", id: "uruma-jima" },
+    { name: "Koreantown Shin-Okubo", image: "/images/shin-okubo.jpg", id: "shin-okubo" }
+  ];
+
+  const heroImages = [
+    '/images/frontpage.jpg',
+    '/images/frontpage-night.png'
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage(prev => (prev + 1) % heroImages.length);
+    }, 6000);
+  }, []);
 
   return (
     <>
       <div className="relative w-full h-screen">
-        <Image src="/images/frontpage.jpg" alt="One Point Five Front Entrance" fill className="object-cover"/>
+        {heroImages.map((image, index) => (
+          <Image key={index} src={image} alt="One Point Five Front Entrance" fill
+            className={`object-cover transition-opacity duration-1000 fade-in-out ${
+              index === currentImage ? 'opacity-100' : 'opacity-0'
+            }`}
+            priority = {index == 0} />
+        ))}
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <Image src="/images/headerlogo.png" alt="One Point Five Logo" width={800} height={200} className="opacity-90 brightness-0 invert"/>
         </div>
@@ -63,7 +95,7 @@ export default function HomePage() {
       </section>
 
 
-      {/* Rooms Section */}
+      {/* Rooms Section (add padding for link to go straight to header) */}
       <section id="rooms">
         <div className="container mx-auto px-4 flex flex-col items-center h-[3326px]">
           <div className="justify-center text-slate-800 text-5xl text-center font-normal font-['Kaisei_Tokumin']">
@@ -82,7 +114,7 @@ export default function HomePage() {
             </div>
 
             <Link href={`/rooms#room-${room.number}`} className="absolute w-40 h-9 mt-[276.3px] ml-[34.03px] justify-center text-orange-50 text-xl font-normal font-['Noto_Sans_JP'] underline">
-              {room.details}
+              Details Here
             </Link>
           </div>
           ))}
@@ -90,7 +122,7 @@ export default function HomePage() {
     </section>
 
 
-    {/* Map Section */}
+    {/* Map Section, switch map info to English Text  */} 
     <section id="map" className="w-full h-[775px] bg-stone-50">
       <div className="pt-8 text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
         Map
@@ -113,60 +145,85 @@ export default function HomePage() {
 
           <div className="w-[466px] text-slate-800 text-base font-normal font-['Noto_Sans_JP'] self-start" 
                dangerouslySetInnerHTML={{ __html: `〒1210823 東京都足立区伊興4丁目2-27<br/>東武スカイツリー線 竹の塚駅 徒歩7分<br/>コンビニ徒歩2分<br/>スーパー徒歩7分<br/>商業ストリート徒歩10分<br/><br/>お問合せ先電話番号: 080-6661-9441(日本語JJapanese)<br/>お問合せ先電話番号: 090-6856-0433(英語English)<br/>お問合せ先メールアドレス: opf@s-kenchiku.jp` }} />
+               {/* "〒1210823 4-2-27 Iko, Adachi-ku, Tokyo
+                  7 minutes walk from Takenotsuka Station on the Tobu Skytree Line
+                  2 minutes walk from convenience store
+                  7 minutes walk from supermarket
+                  10 minutes walk from commercial street" */}
         </div>
       </div>
     </section>
 
     
 
-    {/* Explore Nearby Section */}
+    {/* Explore Nearby Section - Updated with stacked cards, add shadow for more depth, see if blur helps focus on hovered card */}
     <section id="explore-nearby" className="bg-stone-50 py-16">
-      <div className="container w-fill h-[850px] mx-auto px-4">
+      <div className="container w-full h-[850px] mx-auto px-4">
         <h2 className="text-5xl font-normal font-['Kaisei_Tokumin'] text-center text-slate-800 mb-12">
           Explore Nearby
         </h2>
         
-        <div className="flex justify-center items-end max-w-6xl mx-auto">
-          <div className="flex -space-x-32 items-end">
-            
-            {/* EQUIA Image */}
-            <div className="relative w-[462.42px] h-[470.64px] transition-all duration-300 ease-in-out z-10 hover:z-50 hover:scale-105 mb-9">
-              <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                <Image src="/images/equia.png" alt="EQUIA" fill className="object-cover" />
-                <div className="absolute bottom-4 left-4">
-                  <h3 className="text-white text-2xl font-bold mt-2">EQUIA</h3>
-                </div>
-              </div>
-            </div>
+        <div className="flex justify-center items-center max-w-6xl mx-auto relative h-[600px]">
+          <div className="relative w-[1000px] h-[400px] flex justify-center">
+            <div className="relative" style={{ width: `${(nearbyLocations.length - 1) * 100 + 480}px`, height: '400px' }}>
+              {nearbyLocations.map((location, index) => (
+                <Link
+                  key={index}
+                  href={`/locations#${location.id}`}
+                  className="absolute cursor-pointer group"
+                  style={{
+                    left: `${index * 100}px`,
+                    transform: hoveredCard === index ? 'scale(1.05) translateZ(100px)' : '',
+                    zIndex: hoveredCard === index ? 50 : 20 - index,
+                    transition: 'all 0.3s ease-in-out'
+                  }}
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  <div className="relative w-[480px] h-[400px] rounded-lg overflow-hidden shadow-lg group-hover:shadow-2xl transition-shadow duration-300">
+                    <Image 
+                      src={location.image} 
+                      alt={location.name} 
+                      fill 
+                      className="object-cover transition-transform duration-300 group-hover:scale-110" 
+                    />
+                    
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    
+                    {/* Location name */}
+                    <div className="absolute bottom-6 left-6">
+                      <h3 className="text-white text-3xl font-bold font-['Kaisei_Tokumin'] drop-shadow-lg">
+                        {location.name}
+                      </h3>
+                      <p className="text-white/90 text-sm font-['Noto_Sans_JP'] mt-1">
+                        Click to learn more
+                      </p>
+                    </div>
 
-            {/* Ueno Museum Image */}
-            <div className="relative w-[532.30px] h-[541.54px] transition-all duration-300 ease-in-out z-20 hover:z-50 hover:scale-105">
-              <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                <Image src="/images/ueno-museum.png" alt="Ueno Museum" fill className="object-cover" />
-                <div className="absolute bottom-4 left-4">
-                  <h3 className="text-white text-2xl font-bold">Ueno Museum</h3>
-                </div>
-              </div>
+                    {/* Hover indicator */}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
-
-            {/* Toneri Park Image */}
-            <div className="relative w-[462.42px] h-[470.64px] transition-all duration-300 ease-in-out z-10 hover:z-50 hover:scale-105 mb-9">
-              <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                <Image src="/images/toneri-park.png" alt="Toneri Park" fill className="object-cover" />
-                <div className="absolute bottom-4 left-4">
-                  <h3 className="text-white text-2xl font-bold">Toneri Park</h3>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
-        {/* Dots indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
-          <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-          <div className="w-3 h-3 rounded-full bg-gray-600"></div>
-          <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+        {/* View All Button */}
+        <div className="flex justify-center mt-8">
+          <Link 
+            href="/locations"
+            className="px-8 py-3 bg-[#466362] hover:bg-[#3b4c4f] text-white rounded-md transition-colors duration-200 font-['Noto_Sans_JP'] text-lg font-medium"
+          >
+            VIEW ALL LOCATIONS
+          </Link>
         </div>
       </div>
     </section>
@@ -176,9 +233,8 @@ export default function HomePage() {
       <h2 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin']">
         Services
       </h2>
-
       
-        
+      {/* Add subtle drop shadow to bottom left of cards */}
       <div className="container mx-auto mt-36">
         <div className="flex justify-center gap-8">
           {services.map((service, index) => (
@@ -187,7 +243,7 @@ export default function HomePage() {
                 <Image className="w-full h-full rounded-[10px] object-cover" src={service.src} fill alt={service.alt} />
               </div>
               <span className="absolute left-[19.28px] top-[162.62px] text-stone-50 text-2xl font-normal font-['Kaisei_Tokumin'] leading-10">{service.title}</span>
-              <Link href={service.link} className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP']">Details Here</Link>
+              <Link href={service.link} className="absolute left-[19.28px] top-[200px] text-stone-50 text-base font-normal font-['Noto_Sans_JP'] underline">Details Here</Link>
             </div>
           ))}
         </div>

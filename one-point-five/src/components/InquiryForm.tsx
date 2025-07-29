@@ -59,7 +59,7 @@ export default function InquiryForm() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-[800px] bg-stone-50 px-4 mb-4">
+    <div className="flex flex-col items-center justify-center h-[800px] bg-stone-50 px-4">
       <div className="w-full max-w-2xl">
         <h1 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
           Inquiry
