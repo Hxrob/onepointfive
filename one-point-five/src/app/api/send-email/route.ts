@@ -1,6 +1,4 @@
 // Install: npm install resend
-// Add to .env: RESEND_API_KEY=your_key
-
 // api/send-email/route.ts
 import { Resend } from 'resend';
 
@@ -10,7 +8,7 @@ export async function POST(request: Request) {
   const { name, email, message, type } = await request.json();
   
   try {
-    const data = await resend.emails.send({
+    await resend.emails.send({
       from: String(process.env.EMAIL_FROM),
       to: String(process.env.EMAIL_TO),
       subject: type === 'booking' ? 'New Booking Request' : 'New Inquiry',
@@ -23,7 +21,7 @@ export async function POST(request: Request) {
     });
     
     return Response.json({ success: true });
-  } catch (error) {
+  } catch {
     return Response.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }

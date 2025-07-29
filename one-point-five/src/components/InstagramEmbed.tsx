@@ -1,13 +1,27 @@
 'use client';
 import { useEffect } from 'react';
 
+// Define Instagram embed API interface
+interface InstagramEmbedAPI {
+  Embeds: {
+    process: () => void;
+  };
+}
+
+// Extend Window interface
+declare global {
+  interface Window {
+    instgrm?: InstagramEmbedAPI;
+  }
+}
+
 type Props = { url: string };
 
 export default function InstagramEmbed({ url }: Props) {
   useEffect(() => {
     // Once the script is loaded, re-process embeds
-    if ((window as any).instgrm) {
-      (window as any).instgrm.Embeds.process();
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
     }
   }, [url]);
 
