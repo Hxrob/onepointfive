@@ -19,18 +19,17 @@ export default function Header() {
   ];
 
   return (
-    // Add drop-shadow to header for depth
-    <header className="sticky top-0 bg-[#FDF9EF] w-full h-[75px] z-50">
-      <div className="max-w-full mx-auto h-full flex items-center justify-between px-4">
+    <header className="sticky top-0 bg-[#FDF9EF] w-full h-[75px] z-50 drop-shadow-lg">
+      <div className="max-w-full mx-auto h-full flex items-center justify-between px-8">
         {/* Logo */}
-        <div className="h-[75px] ml-8">
+        <div className="h-[75px]">
           <Link href="/">
             <Image src="/images/headerlogo.png" alt="One Point Five" width={300} height={75} />
           </Link>
         </div>
         
         {/* Navigation */}
-        <nav className="flex items-center space-x-20">
+        <nav className="flex items-center space-x-16 mr-4">
           {/* Home Dropdown, add smooth scrolling */}
           <div 
             className="relative"
@@ -46,7 +45,7 @@ export default function Header() {
             
             {/* Dropdown Menu */}
             {isHomeDropdownOpen && (
-              <div className="absolute top-full left-0 w-48 bg-[#FDF9EF] border border-gray-200 rounded-md shadow-lg z-50">
+              <div className="absolute top-full left-0 w-48 bg-[#FDF9EF] border border-gray-200 rounded-md shadow-xl z-50 drop-shadow-lg">
                 <div className="py-2">
                   {homeNavItems.map((item, index) => (
                     <Link
@@ -70,7 +69,7 @@ export default function Header() {
           <Link href="/locations" className={`text-[#1C2541] text-[20px] ${pathname === '/locations' ? 'font-bold' : 'font-medium'}`}>
             Nearby
           </Link>
-          {/* Move elements further left to match distance with header's left side */}
+          
           <Link href="/rooms#booking" className={`text-[#1C2541] text-[20px] ${pathname == '/rooms#booking' ? 'font-bold' : 'font-medium'}`}>
             Book Now
           </Link>

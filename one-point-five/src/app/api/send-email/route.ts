@@ -1,5 +1,3 @@
-// Install: npm install resend
-// api/send-email/route.ts
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
