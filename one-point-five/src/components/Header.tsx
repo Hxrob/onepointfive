@@ -92,7 +92,13 @@ export default function Header() {
           <div className="px-4 py-4 space-y-4">
             {/* Home Section */}
             <div>
-              <div className="text-[#1C2541] text-[18px] font-medium mb-2">Home</div>
+              <Link 
+                href="/" 
+                className={`block text-[18px] ${pathname === '/' ? 'font-bold' : 'font-medium'} text-[#1C2541] mb-2`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home<span className="ml-1">▾</span>
+              </Link>
               <div className="space-y-2 ml-4">
                 {homeNavItems.map((item, index) => (
                   <Link
