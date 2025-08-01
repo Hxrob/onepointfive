@@ -29,8 +29,25 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To enable email functionality, create a `.env.local` file in the root directory with the following variables:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Resend API Configuration
+RESEND_API_KEY=your_resend_api_key_here
+
+# Email Configuration
+EMAIL_FROM=onboarding@resend.dev
+EMAIL_TO=your_email@example.com
+
+# Google Maps API (if using)
+GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+```
+
+### Setting up Resend:
+
+1. Sign up at [resend.com](https://resend.com)
+2. Get your API key from the dashboard
+3. Add your domain or use the default `onboarding@resend.dev` for testing
+4. Update the `EMAIL_TO` with your email address
