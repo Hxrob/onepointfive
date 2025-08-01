@@ -90,25 +90,25 @@ export default function BookingForm() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-[900px] bg-stone-50 px-4">
+    <div className="flex flex-col items-center justify-center min-h-[700px] md:h-[900px] bg-stone-50 px-4 py-8 md:py-0 mb-12">
       <div className="w-full max-w-2xl">
-        <h1 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
+        <h1 className="text-center text-slate-800 text-3xl md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-8 md:mb-12">
           Booking
         </h1>
         
         {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded text-sm md:text-base">
             Your booking request has been sent successfully! We&apos;ll get back to you soon.
           </div>
         )}
         
         {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded text-sm md:text-base">
             Failed to send booking request. Please try again.
           </div>
         )}
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           {/* Name Input */}
           <div className="relative">
             <input
@@ -117,7 +117,7 @@ export default function BookingForm() {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Name"
-              className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 placeholder-slate-500"
+              className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 placeholder-slate-500 text-sm md:text-base"
               required
               disabled={isSubmitting}
             />
@@ -131,7 +131,7 @@ export default function BookingForm() {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Email"
-              className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 placeholder-slate-500"
+              className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 placeholder-slate-500 text-sm md:text-base"
               required
               disabled={isSubmitting}
             />
@@ -143,7 +143,7 @@ export default function BookingForm() {
               name="room"
               value={formData.room}
               onChange={handleInputChange}
-              className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 appearance-none cursor-pointer"
+              className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 appearance-none cursor-pointer text-sm md:text-base"
               required
               disabled={isSubmitting}
             >
@@ -154,7 +154,7 @@ export default function BookingForm() {
                 </option>
               ))}
             </select>
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+            <div className="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
               <svg className="w-4 h-4 text-[#466362]" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
@@ -162,14 +162,14 @@ export default function BookingForm() {
           </div>
 
           {/* Check-in and Check-out */}
-          <div className="flex gap-4">
-            <div className="relative flex-1">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+            <div className="relative w-full md:flex-1">
               <input
                 type="date"
                 name="checkIn"
                 value={formData.checkIn}
                 onChange={handleInputChange}
-                className="w-full h-12 px-4 py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600"
+                className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600 text-sm md:text-base"
                 required
                 disabled={isSubmitting}
               />
@@ -178,13 +178,13 @@ export default function BookingForm() {
                 Check-In
               </label>
             </div>
-            <div className="relative flex-1">
+            <div className="relative w-full md:flex-1">
               <input
                 type="date"
                 name="checkOut"
                 value={formData.checkOut}
                 onChange={handleInputChange}
-                className="w-full h-12 px-4 py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600"
+                className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600 text-sm md:text-base"
                 required
                 disabled={isSubmitting}
               />
@@ -195,24 +195,24 @@ export default function BookingForm() {
           </div>
 
           {/* Adults and Children Counters */}
-          <div className="flex gap-4">
-            <div className="relative flex-1">
-              <div className="w-full h-12 px-4 py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600 flex items-center justify-between">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4">
+            <div className="relative w-full md:flex-1">
+              <div className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600 flex items-center justify-between text-sm md:text-base">
                 <span>Adults</span>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 md:space-x-3">
                   <button
                     type="button"
                     onClick={() => handleCounterChange('adults', false)}
-                    className="w-6 h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
+                    className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
                     disabled={isSubmitting}
                   >
                     −
                   </button>
-                  <span className="w-6 text-center">{formData.adults}</span>
+                  <span className="w-5 md:w-6 text-center text-sm md:text-base">{formData.adults}</span>
                   <button
                     type="button"
                     onClick={() => handleCounterChange('adults', true)}
-                    className="w-6 h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
+                    className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
                     disabled={isSubmitting}
                   >
                     +
@@ -220,23 +220,23 @@ export default function BookingForm() {
                 </div>
               </div>
             </div>
-            <div className="relative flex-1">
-              <div className="w-full h-12 px-4 py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600 flex items-center justify-between">
+            <div className="relative w-full md:flex-1">
+              <div className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-[3px] border-[#466362] rounded-[5px] font-['Kaisei_Tokumin'] text-slate-600 flex items-center justify-between text-sm md:text-base">
                 <span>Children</span>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 md:space-x-3">
                   <button
                     type="button"
                     onClick={() => handleCounterChange('children', false)}
-                    className="w-6 h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
+                    className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
                     disabled={isSubmitting}
                   >
                     −
                   </button>
-                  <span className="w-6 text-center">{formData.children}</span>
+                  <span className="w-5 md:w-6 text-center text-sm md:text-base">{formData.children}</span>
                   <button
                     type="button"
                     onClick={() => handleCounterChange('children', true)}
-                    className="w-6 h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
+                    className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#466362] text-white flex items-center justify-center text-sm hover:bg-[#3b4c4f] disabled:opacity-50"
                     disabled={isSubmitting}
                   >
                     +
@@ -253,8 +253,8 @@ export default function BookingForm() {
               value={formData.message}
               onChange={handleInputChange}
               placeholder="Leave a message..."
-              rows={6}
-              className="w-full px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 placeholder-slate-500 resize-none"
+              rows={4}
+              className="w-full px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-slate-600 placeholder-slate-500 resize-none text-sm md:text-base"
               disabled={isSubmitting}
             />
           </div>
@@ -262,7 +262,7 @@ export default function BookingForm() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-lg font-medium tracking-wider rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 md:py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-base md:text-lg font-medium tracking-wider rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'SENDING...' : 'REQUEST BOOKING'}

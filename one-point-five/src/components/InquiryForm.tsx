@@ -59,25 +59,25 @@ export default function InquiryForm() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-[800px] bg-stone-50 px-4">
+    <div className="flex flex-col items-center justify-center min-h-[600px] md:h-[800px] bg-stone-50 px-4 py-8 md:py-0">
       <div className="w-full max-w-2xl">
-        <h1 className="text-center text-slate-800 text-5xl font-normal font-['Kaisei_Tokumin'] mb-12">
+        <h1 className="text-center text-slate-800 text-3xl md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-8 md:mb-12">
           Inquiry
         </h1>
         
         {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+          <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded text-sm md:text-base">
             Your inquiry has been sent successfully! We&apos;ll get back to you soon.
           </div>
         )}
         
         {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+          <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded text-sm md:text-base">
             Failed to send inquiry. Please try again.
           </div>
         )}
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           {/* Name */}
           <div className="relative">
             <input
@@ -86,7 +86,7 @@ export default function InquiryForm() {
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Name"
-              className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
+              className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-sm md:text-base"
               required
               disabled={isSubmitting}
             />
@@ -100,7 +100,7 @@ export default function InquiryForm() {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Email"
-              className="w-full h-12 px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
+              className="w-full h-10 md:h-12 px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-sm md:text-base"
               required
               disabled={isSubmitting}
             />
@@ -113,8 +113,8 @@ export default function InquiryForm() {
               value={formData.message}
               onChange={handleInputChange}
               placeholder="Leave a message..."
-              rows={6}
-              className="w-full px-4 py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin']"
+              rows={4}
+              className="w-full px-3 md:px-4 py-2 md:py-3 bg-gray-600/20 border-b-[3px] border-[#466362] rounded-tl-[5px] rounded-tr-[5px] font-['Kaisei_Tokumin'] text-sm md:text-base"
               disabled={isSubmitting}
             />
           </div>
@@ -122,7 +122,7 @@ export default function InquiryForm() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-lg font-medium tracking-wider rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 md:py-4 bg-[#466362] hover:bg-[#3b4c4f] text-white text-base md:text-lg font-medium tracking-wider rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'SENDING...' : 'SEND'}
