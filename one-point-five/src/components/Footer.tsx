@@ -32,7 +32,7 @@ export default function Footer() {
             {/* Social Media Icons */}
             <div className="flex space-x-3 md:space-x-4">
               <Link href="https://www.instagram.com/onepointfivehotel/" target="_blank" className="hover:opacity-70 transition-opacity">
-                <Image src="/images/icons/instagram.svg" alt="Instagram" width={32} height={32} className="md:w-10 md:h-10" />
+                <Image src="/images/icons/instagram_footer.svg" alt="Instagram" width={32} height={32} className=" md:w-10 md:h-10" />
               </Link>
               <Link href="https://line.me/en/" target="_blank" className="hover:opacity-70 transition-opacity">
                 <Image src="/images/icons/line.svg" alt="LINE" width={32} height={32} className="md:w-10 md:h-10" />
