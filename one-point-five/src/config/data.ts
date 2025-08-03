@@ -59,7 +59,7 @@ export const roomsDetailed = [
   {
     number: 201, 
     description: "Double Bed Room", 
-    text: "Recommended for those who want a relaxing double bed or sleeping with children.<br/><br/>Price: 16,500 yen per night<br/>Capacity: 1 person (maximum of 3 people)", 
+    text: `Recommended for those who want a relaxing double bed or sleeping with children.<br/><br/>Price: ${process.env.NEXT_PUBLIC_ROOM_201_PRICE || '16,500'} yen per night<br/>Capacity: 1 person (maximum of 3 people)`, 
     images: [
       '/images/rooms/201-1.jpg', 
       '/images/rooms/201-2.jpg', 
@@ -71,7 +71,7 @@ export const roomsDetailed = [
   {
     number: 202, 
     description: "Single Bed Room with Working Desk", 
-    text: "Equipped with a desk. Recommended for businessmen and students.<br/><br/>Price: 14,700 yen per night<br/>Capacity: 1 person (maximum of 2 people)", 
+    text: `Equipped with a desk. Recommended for businessmen and students.<br/><br/>Price: ${process.env.NEXT_PUBLIC_ROOM_202_PRICE || '14,700'} yen per night<br/>Capacity: 1 person (maximum of 2 people)`, 
     images: [
       '/images/rooms/202-1.jpg', 
       '/images/rooms/202-2.jpg', 
@@ -83,7 +83,7 @@ export const roomsDetailed = [
   {
     number: 203, 
     description: "Single Bed Room with Tatami", 
-    text: "Japanese-style room with tatami mats and folding tables.<br/><br/>Price: 14,700 yen per night<br/>Capacity: 1 person (maximum of 2 people)", 
+    text: `Japanese-style room with tatami mats and folding tables.<br/><br/>Price: ${process.env.NEXT_PUBLIC_ROOM_203_PRICE || '14,700'} yen per night<br/>Capacity: 1 person (maximum of 2 people)`, 
     images: [
       '/images/rooms/203-1.jpg', 
       '/images/rooms/203-2.jpg', 
@@ -95,7 +95,7 @@ export const roomsDetailed = [
   {
     number: 204, 
     description: "Twin Bed Room", 
-    text: "Twin beds are the same price for up to two people, so it's a great deal for two people.<br/><br/>Price: 21,000 yen per night<br/>Capacity: 2 people (maximum of 3 people)", 
+    text: `Twin beds are the same price for up to two people, so it's a great deal for two people.<br/><br/>Price: ${process.env.NEXT_PUBLIC_ROOM_204_PRICE || '21,000'} yen per night<br/>Capacity: 2 people (maximum of 3 people)`, 
     images: [
       '/images/rooms/204-1.jpg', 
       '/images/rooms/204-2.jpg', 
@@ -169,3 +169,4 @@ export const penaltyFees = [
     description: "Additional guest 5500 yen per guest, per night"
   }
 ];
+

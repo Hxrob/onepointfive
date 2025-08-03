@@ -38,7 +38,7 @@ export default function RoomsPage() {
             <h1 className="absolute inset-0 flex items-center justify-center text-stone-50 text-4xl md:text-9xl font-normal font-['Kaisei_Tokumin'] z-10">Rooms</h1>
         </section>
 
-
+        <section className="mb-32">
         {roomsDetailed.map((room, roomIndex) => (
             <section id={`room-${room.number}`} key={room.number} className="w-full min-h-[800px] md:h-[1000px] bg-stone-50 flex items-center justify-center py-8 md:py-0">
                 <div className="container mx-auto px-4 flex flex-col w-full max-w-[989px] min-h-[600px] md:h-[710px]">
@@ -95,10 +95,11 @@ export default function RoomsPage() {
                                 </button>
                             ))}
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </section>
         ))}
+        </section>
 
         {/* Additional Fees Section */}
         <section className="w-full bg-[#3E3633] pt-32 pb-24">
@@ -107,10 +108,7 @@ export default function RoomsPage() {
                     <h2 className="text-white text-4xl md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-[30px] underline decoration-1">
                         Additional Fees
                     </h2>
-                    <div className="flex flex-col gap-4 md:pl-8">  
-                        <p className="text-stone-50 text-3xl font-normal font-['Noto_Sans_JP'] leading-[60px]">
-                            Penalty Fees
-                        </p>
+                    <div className="flex flex-col gap-4 md:pl-8">
                         <div className="flex flex-col gap-8">
                             {penaltyFees.map((fee, index) => (
                                 <div key={index} className="flex flex-col gap-4">
