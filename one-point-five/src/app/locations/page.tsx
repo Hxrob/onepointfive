@@ -55,8 +55,7 @@ export default function NearbyPage() {
                                 </p>
 
                                 {/* Buttons */}
-                                {/* either center or full width buttons */}
-                                <div className="flex flex-col gap-3 md:gap-4 max-w-xs">
+                                <div className="flex flex-col gap-3 md:gap-4 w-full md:max-w-xs">
                                     <Link 
                                         href={location.guideUrl} 
                                         target="_blank"

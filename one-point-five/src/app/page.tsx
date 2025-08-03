@@ -37,7 +37,7 @@ export default function HomePage() {
 
 
       {/* Amenities Section */}
-      <section id="amenities" className="py-12 md:py-24 mt-8 md:mt-16 scroll-mt-20">
+      <section id="amenities" className="py-16 md:py-24 scroll-mt-16 md:scroll-mt-20">
         <div className="container mx-auto px-4 flex flex-col w-full min-h-[300px] md:h-[429px]">
           <div className="text-center justify-center text-slate-800 text-4xl underline decoration-1 md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-8 md:mb-30 drop-shadow-lg">
             Amenities
@@ -62,7 +62,7 @@ export default function HomePage() {
 
       {/* Rooms Section */}
       {/* fix padding size for each header */}
-      <section id="rooms" className="scroll-mt-20">
+      <section id="rooms" className="py-16 md:py-24 scroll-mt-16 md:scroll-mt-20">
         <div className="container mx-auto px-4 flex flex-col items-center h-min-content md:h-[3326px]">
           <div className="justify-center text-slate-800 text-4xl underline decoration-1 md:text-5xl text-center font-normal font-['Kaisei_Tokumin'] drop-shadow-lg mb-8">
             Rooms
@@ -90,7 +90,7 @@ export default function HomePage() {
 
 
     {/* Map Section */} 
-    <section id="map" className="w-full min-h-[600px] md:h-[775px] bg-stone-50 scroll-mt-20">
+    <section id="map" className="w-full min-h-[600px] md:h-[775px] bg-stone-50 scroll-mt-16 md:scroll-mt-20">
       <div className="pt-8 text-center text-slate-800 text-4xl underline decoration-1 md:text-5xl font-normal font-['Kaisei_Tokumin'] drop-shadow-lg">
         Map
       </div>
@@ -119,7 +119,7 @@ export default function HomePage() {
     
 
     {/* Explore Nearby Section */}
-    <section id="explore-nearby" className="bg-stone-50 py-8 md:py-16 scroll-mt-20">
+    <section id="explore-nearby" className="bg-stone-50 py-16 md:py-24 scroll-mt-16 md:scroll-mt-20">
       <div className="container w-full mx-auto px-4">
         <h2 className="text-4xl underline decoration-1 md:text-5xl font-normal font-['Kaisei_Tokumin'] text-center text-slate-800 mb-8 md:mb-12 drop-shadow-lg">
           Explore Nearby
@@ -194,8 +194,8 @@ export default function HomePage() {
     </section>
 
     {/* Services Section */}
-    <section id="services" className="w-full min-h-[600px] md:h-[733px] bg-stone-50 scroll-mt-20">
-      <h2 className="text-center text-slate-800 text-4xl underline decoration-1 md:text-5xl font-normal font-['Kaisei_Tokumin'] drop-shadow-lg pt-8">
+    <section id="services" className="w-full min-h-[600px] md:h-[733px] bg-stone-50 py-16 md:py-24 scroll-mt-16 md:scroll-mt-20">
+      <h2 className="text-center text-slate-800 text-4xl underline decoration-1 md:text-5xl font-normal font-['Kaisei_Tokumin'] drop-shadow-lg">
         Services
       </h2>
       
@@ -222,8 +222,8 @@ export default function HomePage() {
 
 
     {/* Socials Section */}
-    <section id="socials" className="w-full min-h-[700px] md:h-[925px] bg-stone-50 scroll-mt-20">
-      <div className="flex flex-col items-center py-8 md:py-0">
+    <section id="socials" className="w-full min-h-[700px] md:h-[925px] bg-stone-50 py-16 md:py-24 scroll-mt-16 md:scroll-mt-20">
+      <div className="flex flex-col items-center">
         <h2 className="text-center text-slate-800 text-4xl underline decoration-1 md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-8 md:mb-12 drop-shadow-lg">
           Socials
         </h2>
@@ -245,7 +245,7 @@ export default function HomePage() {
       </div>
     </section>
 
-    <div id="inquiry" className="scroll-mt-20">
+    <div id="inquiry" className="scroll-mt-16 md:scroll-mt-20">
       <InquiryForm />
     </div>
     </>

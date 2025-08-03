@@ -71,7 +71,7 @@ export const roomsDetailed = [
   {
     number: 202, 
     description: "Single Bed Room with Working Desk", 
-    text: "Equipped with a desk- recommended for businessmen and students.<br/><br/>Price: 14,700 yen per night<br/>Capacity: 1 person (maximum of 2 people)", 
+    text: "Equipped with a desk. Recommended for businessmen and students.<br/><br/>Price: 14,700 yen per night<br/>Capacity: 1 person (maximum of 2 people)", 
     images: [
       '/images/rooms/202-1.jpg', 
       '/images/rooms/202-2.jpg', 
@@ -149,3 +149,23 @@ export const defaultSelectedImages = {
   203: 0,
   204: 0
 }; 
+
+export const penaltyFees = [
+  {
+    title: "Cancellations",
+    icon: "/images/icons/cancel.svg",
+    description: "No-shows & same-day cancellations: No refund<br/>Cancel day before: 50% refund<br/>Seven day advance cancellation:  50% refund"
+  },
+
+  {
+    title: "Check-in/Check-out Fees",
+    icon: "/images/icons/clock.svg",
+    description: "Early check in (Before 15:00) 1500 yen per hour<br/>Late Check out (After 10:00) 1500 yen per 15 minutes"
+  },
+
+  {
+    title: "Guest Fee",
+    icon: "/images/icons/addguest.svg",
+    description: "Additional guest 5500 yen per guest, per night"
+  }
+];
