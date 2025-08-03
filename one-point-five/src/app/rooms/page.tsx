@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import BookingForm from '@/components/BookingForm';
-import { roomsDetailed, amenities, heroImages, defaultSelectedImages } from '@/config/data';
+import { roomsDetailed, amenities, heroImages, defaultSelectedImages, penaltyFees } from '@/config/data';
 
 
 export default function RoomsPage() {
@@ -99,6 +99,42 @@ export default function RoomsPage() {
                 </div>
             </section>
         ))}
+
+        {/* Additional Fees Section */}
+        <section className="w-full bg-[#3E3633] pt-32 pb-24">
+            <div className="container mx-auto px-4 max-w-5xl">
+                <div className="mb-16 text-center md:text-left">
+                    <h2 className="text-white text-4xl md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-[30px] underline decoration-1">
+                        Additional Fees
+                    </h2>
+                    <div className="flex flex-col gap-4 md:pl-8">  
+                        <p className="text-stone-50 text-3xl font-normal font-['Noto_Sans_JP'] leading-[60px]">
+                            Penalty Fees
+                        </p>
+                        <div className="flex flex-col gap-8">
+                            {penaltyFees.map((fee, index) => (
+                                <div key={index} className="flex flex-col gap-4">
+                                    <div className="flex gap-2 justify-center md:justify-start">
+                                        <Image src={fee.icon} alt={fee.title} width={35} height={35} />
+                                        <p className="text-stone-50 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">
+                                            {fee.title}
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <p className="text-stone-50 text-base font-normal font-['Noto_Sans_JP'] text-center md:text-left md:pl-[50px]" dangerouslySetInnerHTML={{ __html: fee.description }} />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                </div>
+                </div>
+
+                <div className="mb-16">
+                </div>
+            </div>
+        </section>
+
         <section id="booking">
             <BookingForm />
         </section>
