@@ -113,7 +113,7 @@ export default function RoomsPage() {
                             {penaltyFees.map((fee, index) => (
                                 <div key={index} className="flex flex-col gap-4">
                                     <div className="flex gap-2 justify-center md:justify-start">
-                                        <Image src={fee.icon} alt={fee.title} width={35} height={35} />
+                                        <Image src={fee.icon} alt={fee.title} width={fee.width || 25} height={25} />
                                         <p className="text-stone-50 text-2xl font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">
                                             {fee.title}
                                         </p>

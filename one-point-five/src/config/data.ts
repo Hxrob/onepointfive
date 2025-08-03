@@ -42,7 +42,7 @@ export const rooms = [
 ];
 
 export const nearbyLocations = [
-  { name: "Ueno Museum", image: "/images/ueno-museum.png", id: "ueno-museum", description: "Our hotel is close to a popular city for tourists, containing a large variety of things such as zoos to museums. There are multiple museums in Ueno and most of them offer a student discount. So if you happen to be a student traveling to Tokyo, make sure to bring it with you!", guideUrl: "https://www.instagram.com/p/C-pESk6y942/?img_index=1", websiteUrl: "https://www.ueno-museum.jp" },
+  { name: "Ueno Park", image: "/images/ueno-museum.png", id: "ueno-museum", description: "The Ueno Park is home to six museums, one being Tokyo National Museum (pictured). Our hotel is close to a popular city for tourists, containing a large variety of things such as zoos to museums and most of them offer a student discount. So if you happen to be a student traveling to Tokyo, make sure to bring it with you!", guideUrl: "https://www.instagram.com/p/C-pESk6y942/?img_index=1", websiteUrl: "https://www.kensetsu.metro.tokyo.lg.jp/jimusho/toubuk/ueno" },
   { name: "Toneri Park", image: "/images/toneri-park.png", id: "toneri-park", description: "A beautiful large park perfect for morning walks, jogging, and family picnics. Toneri Park offers seasonal cherry blossoms in spring and beautiful autumn colors. It's a great place to experience nature without leaving the city.", guideUrl: "https://www.instagram.com/p/C5w_BAcS1am/?img_index=1", websiteUrl: "https://www.tokyo-park.or.jp/park/format/index020.html" },
   { name: "EQUIA", image: "/images/equia.png", id: "equia", description: "A vibrant shopping and entertainment district with modern facilities, restaurants, and cultural experiences. EQUIA offers a perfect blend of traditional Japanese culture and contemporary urban lifestyle.", guideUrl: "https://www.instagram.com/p/DLWcubYTIqm/?img_index=1", websiteUrl: "https://www.equia.jp" },
   { name: "Seiyu", image: "/images/seiyu.jpg", id: "seiyu", description: "A local supermarket chain offering a wide range of groceries, household items, and daily necessities. Seiyu is known for its affordable prices and convenient locations, making it a go-to place for locals.", guideUrl: "https://www.instagram.com/p/DLY-AOATUP6/?img_index=1", websiteUrl: "https://www.seiyu.co.jp" },
@@ -153,20 +153,21 @@ export const defaultSelectedImages = {
 export const penaltyFees = [
   {
     title: "Cancellations",
-    icon: "/images/icons/cancel.svg",
-    description: "No-shows & same-day cancellations: No refund<br/>Cancel day before: 50% refund<br/>Seven day advance cancellation:  50% refund"
+    icon: "/images/icons/cancel1.svg",
+    description: "No-shows & same-day cancellations: No refund<br/>Cancel day before: No refund<br/>Seven day advance cancellation:  50% refund"
   },
 
   {
     title: "Check-in/Check-out Fees",
-    icon: "/images/icons/clock.svg",
-    description: "Early check in (Before 15:00) 1500 yen per hour<br/>Late Check out (After 10:00) 1500 yen per 15 minutes"
+    icon: "/images/icons/clock1.svg",
+    description: "Early check in (Before 15:00): 1500 yen per hour<br/>Late Check out (After 10:00: 1500 yen per 15 minutes"
   },
 
   {
     title: "Guest Fee",
-    icon: "/images/icons/addguest.svg",
-    description: "Additional guest 5500 yen per guest, per night"
+    icon: "/images/icons/addguest1.svg",
+    width: 30,
+    description: "Additional Guest: 5500 yen per guest, per night (includes the extra mattress and linen)"
   }
 ];
 

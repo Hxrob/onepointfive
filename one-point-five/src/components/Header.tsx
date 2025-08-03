@@ -70,7 +70,7 @@ export default function Header() {
             Nearby
           </Link>
           
-          <Link href="/rooms#booking" className={`text-[#1C2541] text-[18px] lg:text-[20px] ${pathname == '/rooms#booking' ? 'font-bold' : 'font-medium'}`}>
+          <Link href="/rooms#booking" className={`bg-[#466362] hover:bg-[#3b4c4f] text-white text-[18px] lg:text-[20px] px-4 py-2 rounded-md transition-all duration-300 ${pathname == '/rooms#booking' ? 'font-bold' : 'font-medium'}`}>
             Book Now
           </Link>
         </nav>
@@ -94,17 +94,17 @@ export default function Header() {
             <div>
               <Link 
                 href="/" 
-                className={`block text-[18px] ${pathname === '/' ? 'font-bold' : 'font-medium'} text-[#1C2541] mb-2`}
+                className={`block text-center text-[18px] ${pathname === '/' ? 'font-bold' : 'font-medium'} text-[#1C2541] mb-2`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home<span className="ml-1">▾</span>
               </Link>
-              <div className="space-y-2 ml-4">
+              <div className="space-y-2">
                 {homeNavItems.map((item, index) => (
                   <Link
                     key={index}
                     href={item.href}
-                    className="block text-[16px] text-[#1C2541] hover:text-gray-600 transition-colors duration-200"
+                    className="block text-center text-[16px] text-[#1C2541] hover:text-gray-600 transition-colors duration-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -117,21 +117,21 @@ export default function Header() {
             <div className="border-t border-gray-200 pt-4 space-y-2">
               <Link 
                 href="/rooms" 
-                className={`block text-[18px] ${pathname === '/rooms' ? 'font-bold' : 'font-medium'} text-[#1C2541]`}
+                className={`block text-center text-[18px] ${pathname === '/rooms' ? 'font-bold' : 'font-medium'} text-[#1C2541]`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Rooms
               </Link>
               <Link 
                 href="/locations" 
-                className={`block text-[18px] ${pathname === '/locations' ? 'font-bold' : 'font-medium'} text-[#1C2541]`}
+                className={`block text-center text-[18px] ${pathname === '/locations' ? 'font-bold' : 'font-medium'} text-[#1C2541]`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Nearby
               </Link>
               <Link 
                 href="/rooms#booking" 
-                className={`block text-[18px] ${pathname == '/rooms#booking' ? 'font-bold' : 'font-medium'} text-[#1C2541]`}
+                className={`block text-center bg-[#466362] hover:bg-[#3b4c4f] text-[18px] ${pathname == '/rooms#booking' ? 'font-bold' : 'font-medium'} text-white px-4 py-2 rounded-md transition-all duration-300`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Book Now

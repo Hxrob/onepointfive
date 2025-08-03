@@ -174,7 +174,7 @@ export default function BookingForm() {
                 disabled={isSubmitting}
               />
               {/* Set check-in background to  */}
-              <label className="absolute -top-2 left-3 bg-stone-50 px-1 text-xs text-slate-500 font-['Kaisei_Tokumin']">
+              <label className="absolute -top-2 left-3 bg-stone-50 px-1 text-xs text-slate-500 rounded-sm font-['Kaisei_Tokumin']">
                 Check-In
               </label>
             </div>
@@ -188,7 +188,7 @@ export default function BookingForm() {
                 required
                 disabled={isSubmitting}
               />
-              <label className="absolute -top-2 left-3 bg-stone-50 px-1 text-xs text-slate-500 font-['Kaisei_Tokumin']">
+              <label className="absolute -top-2 left-3 bg-stone-50 px-1 text-xs text-slate-500 rounded-sm font-['Kaisei_Tokumin']">
                 Check-Out
               </label>
             </div>

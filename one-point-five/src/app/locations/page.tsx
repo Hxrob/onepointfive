@@ -61,8 +61,8 @@ export default function NearbyPage() {
                                         target="_blank"
                                         className="flex items-center justify-center gap-2 md:gap-3 bg-[#466362] hover:bg-[#3b4c4f] text-white py-2 md:py-3 px-4 md:px-6 rounded-md transition-colors duration-200"
                                     >
-                                        <Image src="/images/icons/instagram.svg" alt="Instagram" width={18} height={18} className="invert md:w-5 md:h-5" />
-                                        <span className="text-sm md:text-base font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">
+                                        <Image src="/images/icons/instagram.svg" alt="Instagram" width={18} height={18} className=" md:w-5 md:h-5" />
+                                        <span className="text-sm text-[#FDF9EF] md:text-base font-medium font-['Noto_Sans_JP'] uppercase tracking-wider">
                                             VIEW OUR GUIDE
                                         </span>
                                     </Link>
