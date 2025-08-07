@@ -6,6 +6,8 @@ import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
 import InstagramEmbed from '@/components/InstagramEmbed';
 import InquiryForm from '@/components/InquiryForm';
 import { services, amenities, rooms, nearbyLocations, heroImages, socialLinks, instagramEmbeds, mapConfig } from '@/config/data';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 
 
