@@ -2,9 +2,9 @@
 
 export const services = [
   { 
-    src: '/images/bikerental.png', 
-    alt: 'Bike Rental', 
-    title: 'Bike Rental', 
+    src: '/images/baggage.jpg', 
+    alt: 'Baggage Service', 
+    title: 'Baggage Service', 
     link: 'https://www.instagram.com/p/DMerKPkz5_h/'
   },
   { 

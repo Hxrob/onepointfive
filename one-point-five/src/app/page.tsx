@@ -127,8 +127,9 @@ export default function HomePage() {
         <div className="flex justify-center items-center w-full">
           <div className="flex flex-row items-end h-[250px] md:h-[400px] gap-1 md:gap-2 overflow-x-auto">
             {nearbyLocations.map((location, index) => (
-              <div
+              <Link
                 key={index}
+                href={`/locations#${location.id}`}
                 onMouseEnter={() => setHoveredCard(index)}
                 className={`relative transition-all duration-500 ease-in-out cursor-pointer flex-shrink-0
                   ${hoveredCard === index ? "w-[250px] md:w-[400px] z-20" : "w-12 md:w-16 z-10"}
@@ -177,7 +178,7 @@ export default function HomePage() {
                 {hoveredCard === index && (
                   <div className="absolute inset-0 ring-4 ring-white/40 pointer-events-none rounded-xl" />
                 )}
-              </div>
+              </Link>
             ))}
           </div>
         </div>
