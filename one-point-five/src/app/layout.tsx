@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <SpeedInsights />
+      
       <body cz-shortcut-listen="true">
         <Header />
         <Script
@@ -28,6 +28,7 @@ export default function RootLayout({
         />
         {children}
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
