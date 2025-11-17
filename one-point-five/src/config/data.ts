@@ -138,7 +138,7 @@ export const instagramEmbeds = [
 ];
 
 export const mapConfig = {
-  center: { lat: 35.79638550079517, lng: 139.7871127100252 },
+  center: { lat: 35.79626, lng: 139.787 },
   zoom: 18,
   address: `〒1210823 4-2-27 Iko, Adachi-ku, Tokyo<br/>7 minute walk from Takenotsuka Station on the Tobu Skytree Line<br/>2 minute walk from convenience store<br/>7 minute walk from supermarket<br/>10 minute walk from commercial street<br/><br/>Contact number: 080-6661-9441 (Japanese}<br/>Contact number: 090-6856-0433 (English)<br/>Contact email address: opf@s-kenchiku.jp`
 };
