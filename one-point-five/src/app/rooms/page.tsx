@@ -3,7 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import BookingForm from '@/components/BookingForm';
-import { roomsDetailed, amenities, heroImages, defaultSelectedImages, penaltyFees } from '@/config/data';
+import BookingAvailability from '@/components/BookingAvailability';
+import { roomsDetailed, amenities, heroImages, defaultSelectedImages, penaltyFees, bookingAffiliate } from '@/config/data';
 
 
 export default function RoomsPage() {
@@ -95,7 +96,21 @@ export default function RoomsPage() {
                                 </button>
                             ))}
                         </div>
-                    </div> 
+                    </div>
+
+                    <div className="flex justify-center md:justify-start">
+                        <a
+                            href={`${bookingAffiliate.hotelUrl}?aid=${bookingAffiliate.aid}&selected_currency=${bookingAffiliate.currency}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-[#003580] hover:bg-[#00224f] text-white text-sm md:text-base font-medium font-['Noto_Sans_JP'] px-5 py-3 rounded-md transition-colors duration-200"
+                        >
+                            Check Room {room.number} Availability on Booking.com
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 3h7v7m0-7L10 14m-4-4v10a1 1 0 001 1h10" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
         ))}
@@ -134,6 +149,7 @@ export default function RoomsPage() {
         </section>
 
         <section id="booking">
+            <BookingAvailability />
             <BookingForm />
         </section>
         </>

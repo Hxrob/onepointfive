@@ -1,5 +1,16 @@
 // Static data configuration for One Point Five Hotel
 
+// Booking.com Affiliate Partner Program integration.
+// AID is the public affiliate (publisher) identifier used for click attribution.
+export const bookingAffiliate = {
+  aid: '2861653',
+  // Canonical Booking.com property page for One Point Five (Adachi-ku, Tokyo).
+  hotelUrl: 'https://www.booking.com/hotel/jp/one-point-five-zu-li-qu.html',
+  currency: 'JPY',
+  // Used as a fallback when linking to the search page rather than the hotel page.
+  searchQuery: 'One Point Five Adachi Tokyo'
+};
+
 export const services = [
   { 
     src: '/images/baggage.jpg', 

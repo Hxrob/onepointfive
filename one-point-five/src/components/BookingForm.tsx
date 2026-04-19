@@ -93,7 +93,7 @@ export default function BookingForm() {
     <div className="flex flex-col items-center justify-center min-h-[700px] md:h-[900px] bg-stone-50 px-4 py-8 md:py-0 mb-12">
       <div className="w-full max-w-2xl">
         <h1 className="text-center text-slate-800 text-3xl md:text-5xl font-normal font-['Kaisei_Tokumin'] mb-8 md:mb-12">
-          Booking
+          Questions?
         </h1>
         
         {submitStatus === 'success' && (
